@@ -4,3 +4,6 @@
 [submodule "bookmarks_database"]
 	path = bookmarks_database
 	url = https://github.com/wtain/bookmarks_database.git
+[submodule "bookmarks_frontend"]
+	path = bookmarks_frontend
+	url = https://github.com/wtain/bookmarks_frontend.git
