@@ -11,7 +11,8 @@ services:
       - ./bookmarks_server:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - database_url="http://192.168.1.38:27018/"
+      - DATABASE=mongodb://database:27017/
+# mongodb://host.docker.internal:27018/
   database:
     image: mongo:latest
     volumes:
@@ -26,4 +27,4 @@ services:
       - ./bookmarks_frontend:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - backend_url="http://192.168.1.38:8081/"
+      - backend_url=http://host.docker.internal:8081/
