@@ -1,0 +1,29 @@
+# docker-compose.yml
+version: '2'
+
+services:
+  server:
+    build: ./bookmarks_server/
+    ports:
+      - "5001:5000"
+      - "8081:8080"
+    volumes:
+      - ./bookmarks_server:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - database_url="http://192.168.1.38:27018/"
+  database:
+    image: mongo:latest
+    volumes:
+      - ./bookmarks_database/data/db:/data/db
+    ports:
+      - 27018:27017
+  frontend:
+    build: ./bookmarks_frontend/
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./bookmarks_frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - backend_url="http://192.168.1.38:8081/"
