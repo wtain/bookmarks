@@ -27,4 +27,11 @@ services:
       - ./bookmarks_frontend:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - backend_url=http://host.docker.internal:8081/
+    # In order to get CORS enabled
+      - NODE_ENV=development
+    # For react application to see an environment variable it must be prefixed with "REACT_APP_"
+    # Todo: use nginx to access container's endpoint. For now hardcoding host ip address and port
+      - REACT_APP_BACKEND_URL=http://192.168.1.38:8081
+# http://host.docker.internal:8081/
+# - REACT_APP_BACKEND_URL=http://server:8081/
+# REACT_APP_BACKEND_URL=http://server:8080/
