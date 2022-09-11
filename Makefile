@@ -1,4 +1,8 @@
-run:
+getip:
+	getip.bat
+start: getip
 	docker-compose up
-run-fresh:
+start-fresh: getip
 	docker-compose up --build
+stop:
+	docker-compose down
