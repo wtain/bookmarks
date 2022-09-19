@@ -7,6 +7,8 @@ services:
     ports:
       - "5001:5000"
       - "8081:8080"
+    depends_on:
+      - "database"
     volumes:
       - ./bookmarks_server:/app
     environment:
@@ -19,6 +21,17 @@ services:
       - ./bookmarks_database/data/db:/data/db
     ports:
       - 27018:27017
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8082:8081
+    depends_on:
+      - "database"
+    environment:
+      # ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      # ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://database:27017/
   frontend:
     build: ./bookmarks_frontend/
     ports:
