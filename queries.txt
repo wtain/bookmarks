@@ -1,0 +1,53 @@
+
+ db.bookmarks.find({"summary": {$regex: ".*tags.*"}})
+
+
+ db.bookmarks.find({$or: [{"summary": {$regex: ".*tags.*"}}, {"contents": {$regex: ".*tags.*"}}]})
+
+
+> Produces required result as the output
+ db.bookmarks.aggregate([{$lookup: {from: "comments", localField: "id", foreignField: "bookmarkId", as: "comments"}}])
+
+
+
+
+! NOW?
+db.members.updateMany(
+   { },
+   [
+      { $set: { status: "Modified", comments: [ "$misc1", "$misc2" ], lastUpdate: "$$NOW" } },
+      { $unset: [ "misc1", "misc2" ] }
+   ]
+)
+
+
+db.teachers.find().forEach((doc) => {
+    db.teachers4.insert(doc)
+  })
+
+
+
+db.bookmarks.find().forEach((bm) => {print(bm)})
+
+db.bookmarks.updateMany({}, {$set: {"comments": []}}, false, true)
+
+db.bookmarks.find({"comments": {$exists: false}})
+
+db.bookmarks.updateMany({"comments": {$exists: false}}, {$set: {"comments": []}}, false, true)
+
+
+! This worked!
+db.comments.find().forEach((comment) => { db.bookmarks.updateOne({id: comment.bookmarkId}, {$push: {"comments": comment}}) })
+
+
+! todo: run once code is changed!
+db.comments.drop()
+
+// Get full bookmark with comments
+db.bookmarks.find({"id": "561ae085-9a7f-45a9-8c59-e29944eed86e"})
+
+// Query for bookmarks without comments
+db.bookmarks.aggregate([{$project: {comments: 0}}])
+
+// Bookmarks with comments count
+db.bookmarks.aggregate([{$addFields: {"comments_count": {$size: "$comments"}}}])
