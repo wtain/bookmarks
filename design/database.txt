@@ -1,0 +1,57 @@
+
+Comments modelling
+
+1. Comments as a separate entity
+
+comments = [
+  {
+  	id: 1,
+  	bookmarkId: 1,
+  	text: "Comment 1"
+  },
+  {
+  	id: 2,
+  	bookmarkId: 1,
+  	text: "Comment 2"
+  },
+  {
+  	id: 3,
+  	bookmarkId: 2,
+  	text: "Comment 3"
+  }
+]
+
+pros:
+- Separate entities
+
+cons:
+- Cascade removal is required upon bookmark removal
+
+
+
+2. Comments as a bookmark field
+
+bookmarks = [
+  {
+  	id: 1,
+  	summary: "Summary 1",
+  	contents: "Contents",
+  	comments: [
+  	  {
+  	    id: 1,
+  	    text: "comment 1"
+  	  },
+  	  {
+  	    id: 2,
+  	    text: "comment 2"
+  	  }
+  	]
+  }
+]
+
+pros:
+- Comments are deleted automatically
+
+cons:
+- It is required to remove comments when loading bookmark list
+- Editing bookmark also affects comments (needs to be careful)
