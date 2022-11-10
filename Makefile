@@ -10,3 +10,4 @@ build-server: getip
 	docker-compose up --build server
 repair:
 	repair_winnat.bat
+restart: stop start
