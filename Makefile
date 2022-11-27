@@ -1,5 +1,9 @@
 getip:
+ifeq "$(shell uname -s)" "Darwin"
+	./getip.sh
+else
 	getip.bat
+endif
 start: getip
 	docker-compose up
 start-fresh: getip

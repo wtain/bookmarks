@@ -4,7 +4,36 @@
 
 1. bookmarks_database
 2. bookmarks_frontend
-3. bookmarks_backend
+3. bookmarks_server
+
+
+### Setup
+
+Modules ``bookmarks_server``and ``bookmarks_frontend``require Typescript. 
+Runn following commands in those modules' directories.
+
+```bash
+npm install typescript --save-dev
+```
+
+Add following to ``/etc/hosts``:
+
+```
+host.docker.internal 127.0.0.1
+```
+
+For server it is also necessary to install Nodemon:
+
+```bash
+npm install nodemon
+npm install -g ts-node@latest
+```
+
+
+That helped last time:
+```bash
+npm install ts-node-dev@latest ts-node@latest
+```
 
 ### Running
 
