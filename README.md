@@ -6,6 +6,14 @@
 2. bookmarks_frontend
 3. bookmarks_server
 
+Checkout modules
+
+```bash
+git submodule add git@github.com:wtain/bookmarks_server.git
+git submodule add git@github.com:wtain/bookmarks_database.git
+git submodule add git@github.com:wtain/bookmarks_frontend.git
+```
+
 
 ### Setup
 
