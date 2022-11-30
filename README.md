@@ -18,9 +18,10 @@ git submodule add git@github.com:wtain/bookmarks_frontend.git
 ### Setup
 
 Modules ``bookmarks_server``and ``bookmarks_frontend``require Typescript. 
-Runn following commands in those modules' directories.
+Run following commands in those modules' directories.
 
 ```bash
+cd bookmarks_frontend
 npm install typescript --save-dev
 ```
 
@@ -33,7 +34,8 @@ host.docker.internal 127.0.0.1
 For server it is also necessary to install Nodemon:
 
 ```bash
-npm install nodemon
+cd bookmarks_server
+npm install nodemon --save
 npm install -g ts-node@latest
 ```
 
