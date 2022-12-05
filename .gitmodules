@@ -7,6 +7,3 @@
 [submodule "bookmarks_frontend"]
 	path = bookmarks_frontend
 	url = git@github.com:wtain/bookmarks_frontend.git
-[submodule "bookmarks_atlas"]
-	path = bookmarks_atlas
-	url = git@github.com:wtain/bookmarks_atlas.git
